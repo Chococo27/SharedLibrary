@@ -108,7 +108,7 @@ public static class HttpUtils
 	//archivo directamente al stream de responce y se cierra el archivo y llama al proximo middleware
 	public static async Task ServeStaticFiles(HttpListenerRequest req, HttpListenerResponse res, Hashtable props, Func<Task> next)
 	{
-		string rootDir = Configuration.Get("static.dir", Directory.GetCurrentDirectory())!;
+		string rootDir = Configuration.Get("wwwroot.dir", Directory.GetCurrentDirectory())!;
 		string urlPath = req.Url!.AbsolutePath.TrimStart('/');
 		string filePath = Path.Combine(rootDir, urlPath.Replace('/',
 			Path.DirectorySeparatorChar));
